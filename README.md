@@ -457,10 +457,12 @@ been run:
   pushing to `main` deploys to production behind a required review, both through the same
   Terraform apply over OIDC. Verified against actual AWS resources (the IAM roles, the Glue
   jobs, the Step Functions state machine), not just a green check mark. See "CI/CD" above.
-- 🟡 **Feeder locations: built and tested locally, not yet deployed.** The reference file,
-  geometry module and tests (`tests/test_geo.py`) pass, and `terraform validate` accepts the new
-  `feeder_locations` table. The table and the `feeder_reliability_map` view haven't been applied
-  or queried against live AWS yet.
+- 🟡 **Feeder locations: live in staging, not yet in production.** The `feeder_locations`
+  table was deployed by the staging CI apply, and the `feeder_reliability_map` view was created
+  and queried against it: all 18 feeders return their reliability metrics, with a location for
+  the 13 that have one. That query also showed the gap is not evenly spread. Four of the eight
+  least reliable feeders (MINISTER, ROM, INTERCHANGE, EXPRESS) are among the five unlocated, so
+  resolving them matters more than the count alone suggests.
 
 ## Cost awareness
 
