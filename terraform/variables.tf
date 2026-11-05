@@ -45,7 +45,7 @@ variable "glue_number_of_workers" {
 variable "github_owner" {
   description = "GitHub org or user that owns the repo."
   type        = string
-  default     = "modern-data-engineering-lab"
+  default     = "all-about-data-and-more"
 }
 
 variable "github_repository" {
